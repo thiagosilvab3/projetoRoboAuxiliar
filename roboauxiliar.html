@@ -4,26 +4,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robô auxiliar de TI</title>
-    <style>
-        body {
-            background-color: rgb(39, 39, 39);
-            color: rgb(219, 219, 219);
-            font: normal 18pt Arial;
-         }
-    </style>
+    <title>bot TI</title> 
 </head>
 <body>
-    <h1>Robô auxiliar de TI</h1>
+<script>
 
-    <script>
-        let resp = confirm('O computador não liga?')
-        if (resp === true) {
-            alert('Testar fonte ATX')
-        }   else {
-            alert('Próxima pergunta')
-        }
-        //Os textos serão transferidos para HTML para melhor visualização
-    </script>
+//class para guardar configuração quando for computador
+class pc {
+    constructor(processador, memoria, gpu){
+        this.processador = processador;
+        this.memoria = memoria;
+        this.gpu = gpu
+    }
+
+//método para printar as configurações do pc no console
+    mostrarConfig(){
+        console.log(`PC: Processador: ${this.processador} Memória: ${this.memoria} Placa de vídeo: ${this.gpu}`)
+    }
+}
+//atribuindo valores para as variáveis
+const pc1 = new pc('I5 10400F', '16GB', 'RTX 3060');
+const pc2 = new pc('Ryzen 5600x', '32GB', 'RX 6600 XT');
+
+//printando métodos com as novas atribuições
+pc1.mostrarConfig();
+pc2.mostrarConfig();
+
+//class para guardar configuração quando for notebook(herda os parâmetros da class pc e adiciona 'marca')
+class note extends pc {
+    constructor(processador, memoria, gpu, marca){
+        super(processador, memoria, gpu)
+        this.marca = marca
+    }
+    
+//método para printar as configurações do notebook no console
+    mostrarConfig(){
+        console.log(`(Notebook) Marca: ${this.marca} Processador: ${this.processador} Memória: ${this.memoria} Placa de vídeo: ${this.gpu}`);
+    }
+}
+
+//atribuindo valores para as variáveis com o acréscimo de 'marca'
+const note1 = new note('Ryzen 3500u', '8GB', 'Vega 8','Lenovo')
+const note2 = new note('i3 1115G4', '4GB', 'Intel UHD Graphics', 'Samsung')
+
+//printando métodos da com as atribuições da nova class notebook
+note1.mostrarConfig();
+note2.mostrarConfig();
+
+//criando variáveis para guardar as perguntas e respostas
+const perg1 = 'O computador liga?'
+const perg2 = 'O computador dá vídeo?'
+const perg3 = 'O computador inicia o sistema?'
+
+const solu1 = 'Testar fonte ATX'
+const solu2 = 'Testar placa de vídeo e monitor'
+const solu3 = 'Formatar sistema'
+
+//function que sempre é chamada após uma solução para saber se o problema foi resolvido se sim ele encerra o código se não parte para a próxima pergunta
+function probResolvido(){
+    respf = prompt('O problema foi resolvido?')
+    if (respf === 'sim') {
+        alert('Obrigado por usar o programa!!!')
+        exit
+    } else {
+        alert('Próxima pergunta:')
+    }
+}
+
+//fazendo as perguntas
+let resp1 = prompt(perg1)
+if (resp1 === 'não') {
+    alert(solu1)
+    probResolvido()
+    }
+   else {
+    alert('Próxima pergunta:')
+}
+
+let resp2 = prompt(perg2)
+if (resp2 === 'não') {
+    alert(solu2)
+    probResolvido()
+    }
+   else {
+    alert('Próxima pergunta:')
+}
+
+let resp3 = prompt(perg3)
+if (resp3 === 'não') {
+    alert(solu3)
+    probResolvido()
+    }
+   else {
+    alert('Próxima pergunta:')
+}
+</script>
 </body>
 </html>
