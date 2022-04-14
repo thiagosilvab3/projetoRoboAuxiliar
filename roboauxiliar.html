@@ -103,6 +103,70 @@ for (finalPergs of todasAsPerguntasperguntas){
     console.log(finalPergs)
 } 
 
+//Criando array de objetos
+sistemaOperacional = [];
+sistemaOperacional = [
+
+    {nome: 'Windows 11', versão: 22000.613, bits: 32},
+    {nome: 'Windows 10', versão: 2004, bits: 32},
+    {nome: 'Windows 10', versão: 1909, bits: 64},
+    {nome: 'Windows 10', versão: 1809, bits: 32},
+    {nome: 'Windows 10', versão: 2004, bits: 64},
+    {nome: 'Windows 10', versão: 1909, bits: 32},
+    {nome: 'Windows 11', versão: 22000.593, bits: 64},
+    {nome: 'Windows 10', versão: 1809, bits: 64},   
+]
+console.log(sistemaOperacional);
+
+ //Função para ordenar objeto por versão do SO
+ function ordenarVersão(a, b) {
+  if (a.versão < b.versão) {
+    return -1;
+  }
+  if (a.versão > b.versão) {
+    return 1;
+  }
+  return 0;
+}
+
+console.log('Sistemas ordenados por versão: ', sistemaOperacional.sort(ordenarVersão));
+
+//Colocando o nome de todos os SO em um array para ordenar por string usando o localeCompare
+nomesSO = []
+
+for (let i = 0; i < sistemaOperacional.length; i++){
+   nomesSO[i] = (sistemaOperacional[i].nome)}
+
+console.log('Strings de nomes dos sistemas ordenadas com local', nomesSO.sort((a, b) => a.localeCompare(b)));
+
+//IndexOf - Procurando indice da versão da sistema
+versãoSO = []
+
+for (let i = 0; i < sistemaOperacional.length; i++){
+   versãoSO[i] = (sistemaOperacional[i].versão)}
+
+console.log(versãoSO);
+
+console.log('Posição da versão do SO: ', versãoSO.indexOf(22000.593));
+
+//lastIndexOf - Procurando ultimo indice do nome dos sistemas
+console.log('lastIndexOf: ', nomesSO.lastIndexOf('Windows 10'));
+
+//Find - Procurando sistema de 64 bits
+findPorBit = sistemaOperacional.find((bit) => {
+    return bit.bits === 64;
+})
+console.log(findPorBit);
+
+//FindIndex - Procurando posição do sistema 64 bits
+findInPorBit = sistemaOperacional.findIndex((bit) => {
+    return bit.bits === 64;
+})
+console.log(findInPorBit);
+
+//Includes - Procurando se tem algum SO com o nome 'Linux'
+console.log(nomesSO.includes('Linux'))
+
 //Loop para fazer as perguntas
 for (let i = 0; i < perguntas.length; i++){
     resp[i] = prompt(perguntas[i])
