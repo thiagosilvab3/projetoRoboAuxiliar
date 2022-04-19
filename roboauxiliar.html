@@ -167,6 +167,47 @@ console.log(findInPorBit);
 //Includes - Procurando se tem algum SO com o nome 'Linux'
 console.log(nomesSO.includes('Linux'))
 
+//Bubble Sort
+bitsSO = []
+for (let i = 0; i < sistemaOperacional.length; i++){
+   bitsSO[i] = (sistemaOperacional[i].bits)}
+
+function bubbleSort(items) {
+    var length = items.length;  
+    for (var i = 0; i < length; i++) { 
+          for (var j = 0; j < (length - i - 1); j++) { 
+                   if(items[j] > items[j+1]) {
+                           var tmp = items[j]; 
+                items[j] = items[j+1]; 
+                items[j+1] = tmp; 
+            }
+        }        
+    }
+}
+
+console.log(bitsSO)
+
+bubbleSort(bitsSO)
+console.log(bitsSO)
+
+//Binary Search
+const binSearch = (versãoSO, left, right, valor) => {
+    if (right >= left){
+        const i = parseInt(left + (right-left)/2)
+        if (versãoSO[i] === valor){
+            return valor
+        }
+        if (versãoSO[i] > valor){
+            return binSearch(versãoSO, left, i-1, valor)
+        }
+        return binSearch(versãoSO, i+1, right, valor)
+    }
+    return -1
+}
+
+console.log(binSearch(versãoSO, 0, versãoSO.length-1, 22000.593))
+console.log(binSearch(versãoSO, 0, versãoSO.length-1, 1709))
+
 //Loop para fazer as perguntas
 for (let i = 0; i < perguntas.length; i++){
     resp[i] = prompt(perguntas[i])
@@ -178,6 +219,7 @@ for (let i = 0; i < perguntas.length; i++){
         probResolvido()
     } 
     }
+
 </script>
 </body>
 </html>
